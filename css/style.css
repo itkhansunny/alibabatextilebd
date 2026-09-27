@@ -1188,41 +1188,193 @@ button, input, select, textarea {
   border-bottom: 1px solid var(--slate-200);
 }
 
-.trust-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
+.cert-strip {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  padding: 50px 0 54px;
+  border-bottom: 1px solid var(--slate-200);
+  border-top: 1px solid var(--slate-200);
+  position: relative;
 }
 
-.trust-label {
-  font-size: 0.85rem;
-  font-weight: 700;
+.cert-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.cert-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.cert-label-sub {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--primary);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--slate-500);
+  letter-spacing: 0.14em;
+  display: inline-block;
+  margin-bottom: 8px;
 }
 
-.trust-badges-list {
+.cert-label-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--navy-900);
+  letter-spacing: -0.01em;
+}
+
+.cert-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.cert-logo-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-md);
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 20, 67, 0.04);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-logo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: transparent;
+  transition: background var(--transition-fast);
+}
+
+.cert-logo-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 7, 84, 0.4);
+  box-shadow: 0 18px 36px -8px rgba(0, 20, 67, 0.12);
+}
+
+.cert-logo-card:hover::before {
+  background: linear-gradient(90deg, var(--primary) 0%, #38bdf8 100%);
+}
+
+.cert-img-wrap {
+  height: 75px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.cert-img-wrap img {
+  max-height: 62px;
+  width: auto;
+  max-width: 90%;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
+}
+
+.cert-logo-card:hover .cert-img-wrap img {
+  transform: scale(1.06);
+}
+
+.cert-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cert-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy-900);
+}
+
+.cert-desc {
+  font-size: 0.78rem;
+  color: var(--slate-500);
+  line-height: 1.4;
+}
+
+.cert-micro-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 32px;
   flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px dashed var(--slate-200);
 }
 
-.trust-badge-item {
+.cert-micro-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  color: var(--slate-700);
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--slate-600);
+}
+
+.cert-micro-item i {
+  color: var(--primary);
   font-size: 0.95rem;
 }
 
-.trust-badge-item i {
-  color: var(--primary);
-  font-size: 1.25rem;
+/* Footer Certifications Row */
+.footer-cert-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 24px 0 28px;
+  margin-bottom: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-cert-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--slate-300);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.footer-cert-badges {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-cert-badges img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(0.85);
+  transition: all var(--transition-fast);
+}
+
+.footer-cert-badges img:hover {
+  filter: none;
+  opacity: 1;
+  transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -2456,9 +2608,9 @@ textarea.form-control {
     justify-content: center;
     gap: 16px;
   }
-  .trust-badges-list {
-    gap: 20px;
-    justify-content: center;
+  .cert-logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
   .contact-layout {
     gap: 32px;
@@ -2623,21 +2775,54 @@ textarea.form-control {
     font-size: 0.75rem;
   }
 
-  /* Trust Strip */
+  /* Trust Strip & Certifications */
   .trust-strip {
     padding: 18px 0;
   }
-  .trust-wrapper {
-    flex-direction: column;
-    text-align: center;
+  .cert-strip {
+    padding: 38px 0 42px;
+  }
+  .cert-label-title {
+    font-size: 1.35rem;
+  }
+  .cert-logos-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
   }
-  .trust-badges-list {
-    justify-content: center;
-    gap: 14px 20px;
+  .cert-logo-card {
+    padding: 16px 12px;
   }
-  .trust-badge-item {
-    font-size: 0.85rem;
+  .cert-img-wrap {
+    height: 56px;
+    margin-bottom: 12px;
+  }
+  .cert-img-wrap img {
+    max-height: 48px;
+  }
+  .cert-name {
+    font-size: 0.825rem;
+  }
+  .cert-desc {
+    font-size: 0.7rem;
+  }
+  .cert-micro-list {
+    gap: 12px 18px;
+  }
+  .cert-micro-item {
+    font-size: 0.75rem;
+  }
+  .footer-cert-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+    padding: 20px 0;
+  }
+  .footer-cert-badges {
+    justify-content: center;
+    gap: 16px;
+  }
+  .footer-cert-badges img {
+    height: 32px;
   }
 
   /* About Section */
@@ -3032,5 +3217,25 @@ textarea.form-control {
   }
   .est-sub {
     font-size: 0.68rem;
+  }
+  .cert-logos-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .cert-logo-card {
+    padding: 10px 6px;
+  }
+  .cert-img-wrap {
+    height: 44px;
+    margin-bottom: 8px;
+  }
+  .cert-img-wrap img {
+    max-height: 36px;
+  }
+  .cert-name {
+    font-size: 0.72rem;
+  }
+  .cert-desc {
+    display: none;
   }
 }
